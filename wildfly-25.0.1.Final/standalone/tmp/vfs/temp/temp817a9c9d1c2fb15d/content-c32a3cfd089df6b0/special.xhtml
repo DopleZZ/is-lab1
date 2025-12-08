@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Special Operations</title>
+    <style>
+        /* Красно-белая цветовая схема */
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            color: #dc3545;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(220, 53, 69, 0.3);
+        }
+        
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Стилизация панелей */
+        .ui-panel {
+            border-radius: 12px !important;
+            border: 2px solid #dc3545 !important;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15) !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        
+        .ui-panel:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(220, 53, 69, 0.2) !important;
+        }
+        
+        .ui-panel .ui-panel-titlebar {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            color: white !important;
+            font-weight: bold !important;
+            border-radius: 10px 10px 0 0 !important;
+            padding: 1rem !important;
+        }
+        
+        .ui-panel .ui-panel-content {
+            padding: 1.5rem !important;
+        }
+        
+        /* Стилизация таблицы */
+        .ui-datatable {
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 16px rgba(220, 53, 69, 0.15) !important;
+            margin-top: 2rem !important;
+        }
+        
+        .ui-datatable thead th {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            color: white !important;
+            font-weight: bold !important;
+            padding: 1rem !important;
+        }
+        
+        .ui-datatable tbody tr:nth-child(even) {
+            background: #fff5f5 !important;
+        }
+        
+        .ui-datatable tbody tr:hover {
+            background: #ffe0e0 !important;
+        }
+        
+        .ui-datatable tbody td {
+            padding: 0.8rem !important;
+        }
+        
+        /* Стилизация кнопок */
+        .p-button {
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            padding: 0.6rem 1.2rem !important;
+        }
+        
+        .p-button-success {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+            border-color: #28a745 !important;
+        }
+        
+        .p-button-success:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3) !important;
+        }
+        
+        .p-button-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            border-color: #dc3545 !important;
+        }
+        
+        .p-button-danger:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3) !important;
+        }
+        
+        .p-button-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+            border-color: #007bff !important;
+        }
+        
+        .p-button-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3) !important;
+        }
+        
+        /* Стилизация input полей */
+        .ui-inputtext, .ui-inputnumber-input {
+            border-radius: 8px !important;
+            border: 2px solid #dc3545 !important;
+            transition: all 0.3s ease !important;
+            padding: 0.6rem !important;
+        }
+        
+        .ui-inputtext:focus, .ui-inputnumber-input:focus {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+        }
+        
+        /* Стилизация меню */
+        .ui-menubar {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2) !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .ui-menubar .ui-menuitem-link {
+            color: white !important;
+            font-weight: 500 !important;
+            padding: 0.8rem 1.2rem !important;
+        }
+        
+        .ui-menubar .ui-menuitem-link:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-radius: 4px !important;
+        }
+        
+        .ui-paginator {
+            background: none;
+            border: none;
+        }
+        
+        .operation-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .results-header {
+            background: white;
+            border: 2px solid #dc3545;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 2rem 0 1rem 0;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+        }
+        
+        .results-title {
+            color: #dc3545;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="page-container">
+    <h:form id="form">
+        <p:growl id="growl" showDetail="true"/>
+
+        <!-- Навигационное меню -->
+            <p:menubar>
+            <p:menuitem value="Dashboard" outcome="dashboard" icon="pi pi-home"/>
+            <p:menuitem value="Special Operations" outcome="special" icon="pi pi-cog"/>
+        </p:menubar>
+
+            <h1 class="page-title">⚙️ Special Operations</h1>
+
+            <div class="operations-grid">
+            <!-- Search by substring -->
+                <p:panel header="🔍 Search by Name Contains">
+                    <h:panelGrid columns="1">
+                        <p:inputText value="#{flatMB.searchSubstring}" placeholder="Enter substring to search"/>
+                    <p:commandButton value="Search" action="#{flatMB.searchByNameContaining()}"
+                                         update=":form:searchResultsTable,:form:growl"
+                                         styleClass="p-button-primary"/>
+                </h:panelGrid>
+                    <div class="operation-description">
+                        Найти все квартиры, название которых содержит указанную подстроку
+                    </div>
+            </p:panel>
+
+            <!-- Search by prefix -->
+                <p:panel header="🔤 Search by Name Starts With">
+                    <h:panelGrid columns="1">
+                    <p:inputText value="#{flatMB.searchPrefix}" placeholder="Enter prefix"/>
+                    <p:commandButton value="Search" action="#{flatMB.searchByNameStartingWith()}"
+                                         update=":form:searchResultsTable,:form:growl"
+                                         styleClass="p-button-primary"/>
+                </h:panelGrid>
+                    <div class="operation-description">
+                        Найти все квартиры, название которых начинается с указанного префикса
+                    </div>
+            </p:panel>
+
+            <!-- Cheapest with balcony -->
+                <p:panel header="💰 Find Cheapest with Balcony">
+                    <h:panelGrid columns="1">
+                        <p:commandButton value="Find Cheapest" action="#{flatMB.findCheapestWithBalcony()}"
+                                         update=":form:searchResultsTable,:form:growl"
+                                         styleClass="p-button-success"/>
+                    </h:panelGrid>
+                    <div class="operation-description">
+                        Найти самую дешевую квартиру с балконом
+                    </div>
+            </p:panel>
+
+            <!-- Sort by time to metro -->
+                <p:panel header="🚇 Sort by Time to Metro">
+                    <h:panelGrid columns="1">
+                        <p:commandButton value="Sort by Metro Time" action="#{flatMB.sortByTimeToMetro()}"
+                                         update=":form:searchResultsTable,:form:growl"
+                                         styleClass="p-button-primary"/>
+                    </h:panelGrid>
+                    <div class="operation-description">
+                        Отсортировать все квартиры по времени до метро (по возрастанию)
+                    </div>
+            </p:panel>
+
+            <!-- Delete by number of rooms -->
+                <p:panel header="🗑️ Delete by Number of Rooms">
+                    <h:panelGrid columns="1">
+                    <p:inputNumber value="#{flatMB.roomsToDelete}" min="1" placeholder="Number of rooms"/>
+                    <p:commandButton value="Delete" action="#{flatMB.deleteByNumberOfRooms()}"
+                                         update=":form:growl" 
+                                         onclick="return confirm('Are you sure you want to delete all flats with this number of rooms?')"
+                                         styleClass="p-button-danger"/>
+                </h:panelGrid>
+                    <div class="operation-description">
+                        Удалить все квартиры с указанным количеством комнат
+                    </div>
+            </p:panel>
+            </div>
+
+        <!-- Search Results -->
+            <div class="results-header" rendered="#{not empty flatMB.searchResults}">
+                <h3 class="results-title">📊 Search Results</h3>
+            </div>
+            
+        <p:dataTable id="searchResultsTable" var="flat" value="#{flatMB.searchResults}"
+                     emptyMessage="No results found" rendered="#{not empty flatMB.searchResults}"
+                         paginator="true" rows="10" rowsPerPageTemplate="5,10,15">
+
+                <p:column headerText="ID" style="width: 80px;">
+                <h:outputText value="#{flat.id}"/>
+            </p:column>
+
+                <p:column headerText="Name" style="width: 200px;">
+                <h:outputText value="#{flat.name}"/>
+            </p:column>
+
+                <p:column headerText="Price" style="width: 120px;">
+                <h:outputText value="#{flat.price}"/>
+            </p:column>
+
+                <p:column headerText="Area" style="width: 100px;">
+                <h:outputText value="#{flat.area}"/>
+            </p:column>
+
+                <p:column headerText="Rooms" style="width: 100px;">
+                <h:outputText value="#{flat.numberOfRooms}"/>
+            </p:column>
+
+                <p:column headerText="Furnish" style="width: 120px;">
+                <h:outputText value="#{flat.furnish}"/>
+            </p:column>
+
+                <p:column headerText="View" style="width: 120px;">
+                <h:outputText value="#{flat.view}"/>
+            </p:column>
+
+                <p:column headerText="Balcony" style="width: 100px;">
+                <h:outputText value="#{flat.balcony ? 'Yes' : 'No'}"/>
+            </p:column>
+
+                <p:column headerText="Time to Metro" style="width: 140px;">
+                    <h:outputText value="#{flat.timeToMetroOnFoot} min"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    </div>
+</h:body>
+</html>
