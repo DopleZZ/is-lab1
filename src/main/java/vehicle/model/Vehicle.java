@@ -48,19 +48,19 @@ public class Vehicle implements Serializable {
 
     @Min(value = 1, message = "Number of wheels must be greater than 0")
     @Column(name = "number_of_wheels", nullable = false)
-    private long numberOfWheels;
+    private long numberOfWheels = 1L;
 
     @Min(value = 1, message = "Capacity must be greater than 0")
     @Column(nullable = false)
-    private long capacity;
+    private long capacity = 1L;
 
     @Min(value = 1, message = "Distance travelled must be greater than 0")
     @Column(name = "distance_travelled", nullable = false)
-    private float distanceTravelled;
+    private float distanceTravelled = 1.0f;
 
     @Min(value = 1, message = "Fuel consumption must be greater than 0")
     @Column(name = "fuel_consumption", nullable = false)
-    private float fuelConsumption;
+    private float fuelConsumption = 1.0f;
 
     @NotNull(message = "Fuel type cannot be null")
     @Enumerated(EnumType.STRING)
@@ -75,16 +75,11 @@ public class Vehicle implements Serializable {
     }
 
     public Vehicle() {
-        this.numberOfWheels = 1L;
-        this.capacity = 1L;
-        this.distanceTravelled = 1.0f;
-        this.fuelConsumption = 1.0f;
     }
 
     public Vehicle(String name, Coordinates coordinates, VehicleType type, 
                    Integer enginePower, long numberOfWheels, long capacity,
                    float distanceTravelled, float fuelConsumption, FuelType fuelType) {
-        this();
         this.name = name;
         this.coordinates = coordinates;
         this.type = type;
