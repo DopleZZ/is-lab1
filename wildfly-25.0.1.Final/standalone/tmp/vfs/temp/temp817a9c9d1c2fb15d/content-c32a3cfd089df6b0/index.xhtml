@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Flat Manager System</title>
+    <style>
+        /* Красно-белая цветовая схема */
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .welcome-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .welcome-title {
+            color: #dc3545;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(220, 53, 69, 0.3);
+        }
+        
+        .welcome-subtitle {
+            color: #c82333;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 2px solid #dc3545;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(220, 53, 69, 0.25);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            color: #dc3545;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Стилизация меню */
+        .ui-menubar {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2) !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .ui-menubar .ui-menuitem-link {
+            color: white !important;
+            font-weight: 500 !important;
+            padding: 0.8rem 1.2rem !important;
+        }
+        
+        .ui-menubar .ui-menuitem-link:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-radius: 4px !important;
+        }
+        
+        .ui-paginator {
+            background: none;
+            border: none;
+        }
+        
+        .stats-container {
+            background: white;
+            border: 2px solid #dc3545;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+        }
+        
+        .stats-title {
+            color: #dc3545;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #fff5f5;
+            border-radius: 8px;
+            border: 1px solid #dc3545;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true"/>
+
+        <!-- Навигационное меню -->
+        <p:menubar>
+            <p:menuitem value="Dashboard" outcome="dashboard" icon="pi pi-home"/>
+            <p:menuitem value="Special Operations" outcome="special" icon="pi pi-cog"/>
+        </p:menubar>
+
+        <!-- Главная страница -->
+        <div class="welcome-container">
+            <h1 class="welcome-title">🏠 Flat Manager System</h1>
+            <p class="welcome-subtitle">Управление квартирами и недвижимостью</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Dashboard</h3>
+                    <p class="feature-description">Просматривайте и управляйте всеми квартирами в системе. Добавляйте, редактируйте и удаляйте записи.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Поиск и фильтрация</h3>
+                    <p class="feature-description">Находите квартиры по различным критериям: название, цена, площадь, количество комнат.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Специальные операции</h3>
+                    <p class="feature-description">Выполняйте сложные запросы: поиск по подстроке, сортировка по времени до метро, массовое удаление.</p>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <h3 class="stats-title">Система готова к работе</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">✅</div>
+                        <div class="stat-label">База данных</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">🚀</div>
+                        <div class="stat-label">WildFly Server</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">💎</div>
+                        <div class="stat-label">PrimeFaces UI</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">🔧</div>
+                        <div class="stat-label">JSF Framework</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>
