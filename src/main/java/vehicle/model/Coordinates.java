@@ -1,6 +1,8 @@
 package vehicle.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -13,6 +15,12 @@ import java.util.List;
         @NamedQuery(name = "Coordinates.findAll", query = "SELECT c FROM Coordinates c"),
         @NamedQuery(name = "Coordinates.findByXY", query = "SELECT c FROM Coordinates c WHERE c.x = :x AND c.y = :y")
 })
+@Getter
+@Setter
+@ToString(exclude = "vehicles")
+@EqualsAndHashCode(exclude = "vehicles")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Coordinates implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,27 +41,8 @@ public class Coordinates implements Serializable {
     @JsonIgnore
     private List<Vehicle> vehicles;
 
-    public Coordinates() {}
-
     public Coordinates(float x, Float y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public float getX() { return x; }
-    public void setX(float x) { this.x = x; }
-
-    public Float getY() { return y; }
-    public void setY(Float y) { this.y = y; }
-
-    public List<Vehicle> getVehicles() { return vehicles; }
-    public void setVehicles(List<Vehicle> vehicles) { this.vehicles = vehicles; }
-
-    @Override
-    public String toString() {
-        return "Coordinates{id=" + id + ", x=" + x + ", y=" + y + "}";
     }
 }

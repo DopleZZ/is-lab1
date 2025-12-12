@@ -1,11 +1,12 @@
 package vehicle.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
-
 
 @Entity
 @Table(name = "vehicles")
@@ -16,6 +17,12 @@ import java.util.Date;
         @NamedQuery(name = "Vehicle.findByNameStartingWith", query = "SELECT v FROM Vehicle v WHERE v.name LIKE :prefix"),
         @NamedQuery(name = "Vehicle.findByFuelTypeLessThan", query = "SELECT v FROM Vehicle v WHERE v.fuelType < :fuelType")
 })
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,9 +81,7 @@ public class Vehicle implements Serializable {
         }
     }
 
-    public Vehicle() {
-    }
-
+    // Custom constructor for convenience (excluding id and creationDate)
     public Vehicle(String name, Coordinates coordinates, VehicleType type, 
                    Integer enginePower, long numberOfWheels, long capacity,
                    float distanceTravelled, float fuelConsumption, FuelType fuelType) {
@@ -89,44 +94,6 @@ public class Vehicle implements Serializable {
         this.distanceTravelled = distanceTravelled;
         this.fuelConsumption = fuelConsumption;
         this.fuelType = fuelType;
-    }
-
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public Coordinates getCoordinates() { return coordinates; }
-    public void setCoordinates(Coordinates coordinates) { this.coordinates = coordinates; }
-
-    public Date getCreationDate() { return creationDate; }
-    public void setCreationDate(Date creationDate) { this.creationDate = creationDate; }
-
-    public VehicleType getType() { return type; }
-    public void setType(VehicleType type) { this.type = type; }
-
-    public Integer getEnginePower() { return enginePower; }
-    public void setEnginePower(Integer enginePower) { this.enginePower = enginePower; }
-
-    public long getNumberOfWheels() { return numberOfWheels; }
-    public void setNumberOfWheels(long numberOfWheels) { this.numberOfWheels = numberOfWheels; }
-
-    public long getCapacity() { return capacity; }
-    public void setCapacity(long capacity) { this.capacity = capacity; }
-
-    public float getDistanceTravelled() { return distanceTravelled; }
-    public void setDistanceTravelled(float distanceTravelled) { this.distanceTravelled = distanceTravelled; }
-
-    public float getFuelConsumption() { return fuelConsumption; }
-    public void setFuelConsumption(float fuelConsumption) { this.fuelConsumption = fuelConsumption; }
-
-    public FuelType getFuelType() { return fuelType; }
-    public void setFuelType(FuelType fuelType) { this.fuelType = fuelType; }
-
-    @Override
-    public String toString() {
-        return "Vehicle{id=" + id + ", name='" + name + "', type=" + type + "}";
     }
 }
 
