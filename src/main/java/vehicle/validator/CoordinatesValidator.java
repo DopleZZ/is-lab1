@@ -11,7 +11,7 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("coordinatesValidator")
 public class CoordinatesValidator implements Validator {
 
-    private static final long MIN_X = -540; // больше -541
+    private static final long MIN_X = -540; 
     private static final long MAX_Y = 568;
 
     @Override

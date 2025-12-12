@@ -18,6 +18,8 @@
             <a href="<c:url value='/'/>">Главная</a>
             <a href="<c:url value='/special'/>">Специальные операции</a>
             <a href="<c:url value='/vehicles/create'/>">Создать новое транспортное средство</a>
+            <a href="<c:url value='/import'/>">Импорт</a>
+            <a href="<c:url value='/logout'/>">Выйти</a>
         </div>
         
         <h1>Панель управления транспортными средствами</h1>
@@ -103,6 +105,13 @@
                             <a href="<c:url value='/vehicles/${vehicle.id}/edit'/>" class="btn btn-success">Редактировать</a>
                             <form method="post" action="<c:url value='/vehicles/${vehicle.id}/delete'/>" class="inline-form">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены?')">Удалить</button>
+                            </form>
+                            <form method="post" action="<c:url value='/vehicles/${vehicle.id}/reset-distance'/>" class="inline-form">
+                                <button type="submit" class="btn btn-warning" onclick="return confirm('Сбросить пробег?')">Сброс пробега</button>
+                            </form>
+                            <form method="post" action="<c:url value='/vehicles/${vehicle.id}/add-wheels'/>" class="inline-form" style="display:inline-flex; align-items:center; gap: 5px;">
+                                <input type="number" name="wheelsToAdd" min="1" style="width: 60px;" placeholder="+Кол" required>
+                                <button type="submit" class="btn btn-info">Добавить колеса</button>
                             </form>
                         </td>
                     </tr>

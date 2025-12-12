@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Vehicle Manager API
+  description: API for managing vehicles
+  version: 1.0.0
+servers:
+  - url: /vehicle-manager-system
+paths:
+  /vehicles:
+    get:
+      summary: List all vehicles
+      operationId: getVehicles
+      tags:
+        - vehicle
+      responses:
+        '200':
+          description: A list of vehicles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicle'
+    post:
+      summary: Create a vehicle
+      operationId: createVehicle
+      tags:
+        - vehicle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vehicle'
+      responses:
+        '201':
+          description: Vehicle created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+
+components:
+  schemas:
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          readOnly: true
+        name:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        creationDate:
+          type: string
+          format: date-time
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/VehicleType'
+        enginePower:
+          type: integer
+          format: int32
+          minimum: 1
+        numberOfWheels:
+          type: integer
+          format: int64
+          minimum: 1
+        capacity:
+          type: integer
+          format: int64
+          minimum: 1
+        distanceTravelled:
+          type: number
+          format: float
+          minimum: 1
+        fuelConsumption:
+          type: number
+          format: float
+          minimum: 1
+        fuelType:
+          $ref: '#/components/schemas/FuelType'
+      required:
+        - name
+        - coordinates
+        - type
+        - numberOfWheels
+        - capacity
+        - distanceTravelled
+        - fuelConsumption
+        - fuelType
+
+    Coordinates:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        x:
+          type: number
+          format: float
+        y:
+          type: number
+          format: float
+          maximum: 820
+      required:
+        - x
+        - y
+
+    VehicleType:
+      type: string
+      enum:
+        - SUBMARINE
+        - BOAT
+        - CHOPPER
+
+    FuelType:
+      type: string
+      enum:
+        - GASOLINE
+        - KEROSENE
+        - ELECTRICITY
+        - ANTIMATTER

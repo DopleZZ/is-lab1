@@ -178,6 +178,38 @@ public class VehicleController {
             }
         }
     }
+
+    @PostMapping("/{id}/reset-distance")
+    public String resetDistance(@PathVariable int id) {
+        try {
+            vehicleService.resetDistanceTravelled(id);
+            Optional<Vehicle> v = vehicleService.getVehicleById(id);
+            if(v.isPresent()) notificationService.notifyVehicleUpdated(v.get());
+            return "redirect:/vehicles?updated=true";
+        } catch (Exception e) {
+            try {
+                return "redirect:/vehicles?error=" + java.net.URLEncoder.encode("Ошибка при сбросе пробега: " + e.getMessage(), "UTF-8");
+            } catch (java.io.UnsupportedEncodingException ex) {
+                return "redirect:/vehicles?error=Error";
+            }
+        }
+    }
+
+    @PostMapping("/{id}/add-wheels")
+    public String addWheels(@PathVariable int id, @RequestParam long wheelsToAdd) {
+        try {
+            vehicleService.addWheels(id, wheelsToAdd);
+            Optional<Vehicle> v = vehicleService.getVehicleById(id);
+            if(v.isPresent()) notificationService.notifyVehicleUpdated(v.get());
+            return "redirect:/vehicles?updated=true";
+        } catch (Exception e) {
+            try {
+                return "redirect:/vehicles?error=" + java.net.URLEncoder.encode("Ошибка при добавлении колес: " + e.getMessage(), "UTF-8");
+            } catch (java.io.UnsupportedEncodingException ex) {
+                return "redirect:/vehicles?error=Error";
+            }
+        }
+    }
     
     @GetMapping("/api")
     @ResponseBody

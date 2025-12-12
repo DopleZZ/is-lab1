@@ -23,6 +23,9 @@ public class VehicleService {
     private NotificationService notificationService;
     
     public Vehicle createVehicle(@Valid Vehicle vehicle) {
+        if (vehicleDAO.existsByName(vehicle.getName())) {
+            throw new IllegalArgumentException("Vehicle with name " + vehicle.getName() + " already exists");
+        }
         Vehicle savedVehicle = vehicleDAO.save(vehicle);
         return savedVehicle;
     }

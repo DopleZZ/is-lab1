@@ -118,7 +118,7 @@
                 <in-memory/>
             </job-repository>
             <thread-pool name="batch">
-                <max-threads count="10"/>
+                <max-threads count="5"/>
                 <keepalive-time time="30" unit="seconds"/>
             </thread-pool>
         </subsystem>
@@ -173,10 +173,10 @@
                     <managed-thread-factory name="default" jndi-name="java:jboss/ee/concurrency/factory/default" context-service="default"/>
                 </managed-thread-factories>
                 <managed-executor-services>
-                    <managed-executor-service name="default" jndi-name="java:jboss/ee/concurrency/executor/default" context-service="default" hung-task-termination-period="0" hung-task-threshold="60000" keepalive-time="5000"/>
+                    <managed-executor-service name="default" jndi-name="java:jboss/ee/concurrency/executor/default" context-service="default" hung-task-termination-period="0" hung-task-threshold="60000" keepalive-time="5000" max-threads="5"/>
                 </managed-executor-services>
                 <managed-scheduled-executor-services>
-                    <managed-scheduled-executor-service name="default" jndi-name="java:jboss/ee/concurrency/scheduler/default" context-service="default" hung-task-termination-period="0" hung-task-threshold="60000" keepalive-time="3000"/>
+                    <managed-scheduled-executor-service name="default" jndi-name="java:jboss/ee/concurrency/scheduler/default" context-service="default" hung-task-termination-period="0" hung-task-threshold="60000" keepalive-time="3000" max-threads="5"/>
                 </managed-scheduled-executor-services>
             </concurrent>
             <default-bindings context-service="java:jboss/ee/concurrency/context/default" datasource="java:jboss/datasources/ExampleDS" managed-executor-service="java:jboss/ee/concurrency/executor/default" managed-scheduled-executor-service="java:jboss/ee/concurrency/scheduler/default" managed-thread-factory="java:jboss/ee/concurrency/factory/default"/>
@@ -216,7 +216,7 @@
             </remote>
             <thread-pools>
                 <thread-pool name="default">
-                    <max-threads count="10"/>
+                    <max-threads count="5"/>
                     <keepalive-time time="60" unit="seconds"/>
                 </thread-pool>
             </thread-pools>
@@ -394,7 +394,7 @@
             </cache-container>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:io:3.0">
-            <worker name="default"/>
+            <worker name="default" io-threads="2" task-max-threads="10"/>
             <buffer-pool name="default"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:jaxrs:2.0"/>
@@ -403,15 +403,15 @@
             <bean-validation enabled="true"/>
             <default-workmanager>
                 <short-running-threads>
-                    <core-threads count="50"/>
-                    <queue-length count="50"/>
-                    <max-threads count="50"/>
+                    <core-threads count="10"/>
+                    <queue-length count="10"/>
+                    <max-threads count="10"/>
                     <keepalive-time time="10" unit="seconds"/>
                 </short-running-threads>
                 <long-running-threads>
-                    <core-threads count="50"/>
-                    <queue-length count="50"/>
-                    <max-threads count="50"/>
+                    <core-threads count="10"/>
+                    <queue-length count="10"/>
+                    <max-threads count="10"/>
                     <keepalive-time time="10" unit="seconds"/>
                 </long-running-threads>
             </default-workmanager>

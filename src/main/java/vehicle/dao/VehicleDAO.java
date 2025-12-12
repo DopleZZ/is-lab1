@@ -147,5 +147,12 @@ public class VehicleDAO {
             throw new IllegalArgumentException("Vehicle with id " + id + " not found");
         }
     }
+
+    public boolean existsByName(String name) {
+        Long count = em.createQuery("SELECT COUNT(v) FROM Vehicle v WHERE v.name = :name", Long.class)
+                .setParameter("name", name)
+                .getSingleResult();
+        return count > 0;
+    }
 }
 

@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,6 +28,8 @@ public class Coordinates implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Min(value = -1000, message = "X cannot be less than -1000")
+    @Max(value = 1000, message = "X cannot be greater than 1000")
     @Column(name = "x", nullable = false)
     private float x;
 
