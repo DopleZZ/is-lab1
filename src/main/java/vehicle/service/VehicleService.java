@@ -27,9 +27,6 @@ public class VehicleService {
     private VehicleDAO vehicleDAO;
     
     @Autowired
-    private NotificationService notificationService;
-    
-    @Autowired
     private VehicleValidator vehicleValidator;
     
     @Transactional(isolation = Isolation.SERIALIZABLE)

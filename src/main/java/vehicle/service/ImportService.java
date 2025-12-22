@@ -2,6 +2,7 @@ package vehicle.service;
 
 import vehicle.dao.ImportHistoryDAO;
 import vehicle.dao.UserDAO;
+import vehicle.dao.VehicleDAO;
 import vehicle.model.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -26,6 +27,9 @@ public class ImportService {
     private VehicleService vehicleService;
     
     @Autowired
+    private VehicleDAO vehicleDAO;
+    
+    @Autowired
     private CoordinatesService coordinatesService;
 
     @Autowired
@@ -34,7 +38,7 @@ public class ImportService {
     @Autowired
     private UserDAO userDAO;
 
-    @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
+    @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public int executeImport(MultipartFile file) throws Exception {
         List<Vehicle> vehiclesToSave = new ArrayList<>();
         List<String> errors = new ArrayList<>();
@@ -55,6 +59,12 @@ public class ImportService {
 
             if (!errors.isEmpty()) {
                 throw new IllegalArgumentException("Ошибки валидации:\n" + String.join("\n", errors));
+            }
+
+            for (Vehicle v : vehiclesToSave) {
+                if (vehicleDAO.existsByName(v.getName())) {
+                    throw new IllegalArgumentException("Транспорт с именем '" + v.getName() + "' уже существует в базе");
+                }
             }
 
             for (Vehicle v : vehiclesToSave) {
