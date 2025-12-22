@@ -25,8 +25,10 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/resources/**", "/css/**", "/js/**", "/register", "/login").permitAll()
+                .antMatchers("/resources/**", "/css/**", "/js/**").permitAll()
+                .antMatchers("/register", "/login").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/", "/index.jsp").authenticated()
                 .anyRequest().authenticated()
             .and()
             .formLogin()
@@ -36,6 +38,7 @@ public class SecurityConfig {
                 .permitAll()
             .and()
             .logout()
+                .logoutSuccessUrl("/login?logout")
                 .permitAll();
         
         return http.build();

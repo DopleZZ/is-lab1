@@ -1,0 +1,188 @@
+2025-12-22 03:20:44,598 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-12-22 03:20:44,612 INFO o.a.j.JMeter: Loading user properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2025-12-22 03:20:44,612 INFO o.a.j.JMeter: Loading system properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: Version 5.6.3
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: java.version=21.0.9
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: os.name=Mac OS X
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: os.arch=aarch64
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: os.version=15.5
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: java.awt.headless=null
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-12-22 03:20:44,616 INFO o.a.j.JMeter: Available Processors =8
+2025-12-22 03:20:44,622 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-12-22 03:20:44,622 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-12-22 03:20:44,622 INFO o.a.j.JMeter: JMeterHome=/opt/homebrew/Cellar/jmeter/5.6.3/libexec
+2025-12-22 03:20:44,622 INFO o.a.j.JMeter: user.dir  =/Users/artem/Documents/is-lab1
+2025-12-22 03:20:44,622 INFO o.a.j.JMeter: PWD       =/Users/artem/Documents/is-lab1
+2025-12-22 03:20:44,623 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: Cyberways-MacBook.local FullName: localhost
+2025-12-22 03:20:44,630 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2025-12-22 03:20:45,020 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2025-12-22 03:20:45,825 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.action.Command], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-12-22 03:20:45,885 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.gui.plugin.MenuCreator], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-12-22 03:20:45,961 INFO o.j.r.JARSourceHTTP: Found cached repo
+2025-12-22 03:20:46,051 INFO o.j.r.PluginManager: Plugins Status: [jpgc-plugins-manager=1.9, jmeter-core=5.6.3, jmeter-ftp=5.6.3, jmeter-http=5.6.3, jmeter-jdbc=5.6.3, jmeter-jms=5.6.3, jmeter-junit=5.6.3, jmeter-java=5.6.3, jmeter-ldap=5.6.3, jmeter-mail=5.6.3, jmeter-mongodb=5.6.3, jmeter-native=5.6.3, jmeter-tcp=5.6.3, jmeter-components=5.6.3]
+2025-12-22 03:20:46,051 INFO o.j.r.PluginManagerMenuItem: Plugins Manager has upgrades: [jpgc-plugins-manager]
+2025-12-22 03:20:47,132 INFO o.a.j.JMeterGuiLauncher: Loading file: jmeter_plan.jmx
+2025-12-22 03:20:47,134 INFO o.a.j.s.FileServer: Default base='/Users/artem/Documents/is-lab1'
+2025-12-22 03:20:47,134 INFO o.a.j.s.FileServer: Set new base='/Users/artem/Documents/is-lab1'
+2025-12-22 03:20:47,227 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2025-12-22 03:20:47,232 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2025-12-22 03:20:47,233 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2025-12-22 03:20:47,234 INFO o.a.j.s.SaveService: Loading file: jmeter_plan.jmx
+2025-12-22 03:20:47,277 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2025-12-22 03:20:47,283 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2025-12-22 03:20:47,342 INFO o.a.j.s.FileServer: Set new base='/Users/artem/Documents/is-lab1'
+2025-12-22 03:20:47,465 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2025-12-22 03:20:47,465 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2025-12-22 03:20:47,465 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2025-12-22 03:20:47,465 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2025-12-22 03:20:47,508 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.ResultRenderer], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-12-22 03:20:47,518 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.visualizers.RequestView], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-12-22 03:20:49,334 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2025-12-22 03:20:49,335 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-12-22 03:20:49,335 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-12-22 03:20:49,335 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2025-12-22 03:20:49,335 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2025-12-22 03:20:49,354 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-12-22 03:20:49,359 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2025-12-22 03:20:49,384 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Setup - Create Test Vehicle
+2025-12-22 03:20:49,385 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Setup - Create Test Vehicle.
+2025-12-22 03:20:49,385 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:20:49,385 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=0 delayedStart=false
+2025-12-22 03:20:49,388 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2025-12-22 03:20:49,388 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Setup - Create Test Vehicle to finish before starting next group
+2025-12-22 03:20:49,388 INFO o.a.j.t.JMeterThread: Thread started: Setup - Create Test Vehicle 1-1
+2025-12-22 03:20:49,391 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = Cyberways-MacBook.local
+2025-12-22 03:20:49,393 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2025-12-22 03:20:50,598 ERROR o.a.j.u.BeanShellInterpreter: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:20:50,598 WARN o.a.j.e.BeanShellPostProcessor: Problem in BeanShell script: org.apache.jorphan.util.JMeterException: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:20:50,901 ERROR o.a.j.u.BeanShellInterpreter: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:20:50,901 WARN o.a.j.e.BeanShellPostProcessor: Problem in BeanShell script: org.apache.jorphan.util.JMeterException: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:20:50,904 INFO o.a.j.t.JMeterThread: Thread is done: Setup - Create Test Vehicle 1-1
+2025-12-22 03:20:50,904 INFO o.a.j.t.JMeterThread: Thread finished: Setup - Create Test Vehicle 1-1
+2025-12-22 03:20:50,904 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Test 1: Concurrent Update (5 threads)
+2025-12-22 03:20:50,904 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group Test 1: Concurrent Update (5 threads).
+2025-12-22 03:20:50,904 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:20:50,904 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=5 ramp-up=0 delayedStart=false
+2025-12-22 03:20:50,905 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:20:50,905 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:20:50,905 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:20:50,906 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2025-12-22 03:20:50,905 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:20:50,906 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Test 1: Concurrent Update (5 threads) to finish before starting next group
+2025-12-22 03:20:50,906 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:20:52,549 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:20:52,550 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:20:52,866 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:20:52,866 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:20:52,866 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:20:52,866 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:20:52,881 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:20:52,881 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:20:52,881 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:20:52,881 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:20:52,881 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Test 2: Unique Name Constraint (3 threads)
+2025-12-22 03:20:52,881 INFO o.a.j.e.StandardJMeterEngine: Starting 3 threads for group Test 2: Unique Name Constraint (3 threads).
+2025-12-22 03:20:52,881 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:20:52,881 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=3 ramp-up=0 delayedStart=false
+2025-12-22 03:20:52,882 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2025-12-22 03:20:52,882 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Test 2: Unique Name Constraint (3 threads) to finish before starting next group
+2025-12-22 03:20:52,882 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:20:52,882 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:20:52,883 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:20:54,018 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:20:54,019 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:20:54,276 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:20:54,276 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:20:54,568 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:20:54,569 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:20:54,572 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 4 : Test 3: Concurrent Import (2 threads)
+2025-12-22 03:20:54,573 INFO o.a.j.e.StandardJMeterEngine: Starting 2 threads for group Test 3: Concurrent Import (2 threads).
+2025-12-22 03:20:54,573 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:20:54,573 INFO o.a.j.t.ThreadGroup: Starting thread group... number=4 threads=2 ramp-up=0 delayedStart=false
+2025-12-22 03:20:54,577 INFO o.a.j.t.ThreadGroup: Started thread group number 4
+2025-12-22 03:20:54,577 INFO o.a.j.t.JMeterThread: Thread started: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:20:54,577 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2025-12-22 03:20:54,577 INFO o.a.j.t.JMeterThread: Thread started: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:20:55,180 INFO o.a.j.s.FileServer: Stored: test_import_valid1.csv
+2025-12-22 03:20:55,895 INFO o.a.j.t.JMeterThread: Thread is done: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:20:55,895 INFO o.a.j.t.JMeterThread: Thread is done: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:20:55,896 INFO o.a.j.t.JMeterThread: Thread finished: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:20:55,896 INFO o.a.j.t.JMeterThread: Thread finished: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:20:55,897 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2025-12-22 03:20:55,897 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2025-12-22 03:25:37,816 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2025-12-22 03:25:37,817 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-12-22 03:25:37,819 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2025-12-22 03:25:37,857 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Setup - Create Test Vehicle
+2025-12-22 03:25:37,857 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Setup - Create Test Vehicle.
+2025-12-22 03:25:37,858 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:25:37,858 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=0 delayedStart=false
+2025-12-22 03:25:37,861 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2025-12-22 03:25:37,861 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Setup - Create Test Vehicle to finish before starting next group
+2025-12-22 03:25:37,862 INFO o.a.j.t.JMeterThread: Thread started: Setup - Create Test Vehicle 1-1
+2025-12-22 03:25:38,542 ERROR o.a.j.u.BeanShellInterpreter: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:25:38,542 WARN o.a.j.e.BeanShellPostProcessor: Problem in BeanShell script: org.apache.jorphan.util.JMeterException: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:25:38,813 ERROR o.a.j.u.BeanShellInterpreter: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:25:38,813 WARN o.a.j.e.BeanShellPostProcessor: Problem in BeanShell script: org.apache.jorphan.util.JMeterException: Error invoking bsh method: eval	Sourced file: inline evaluation of: ``props.put("VEHICLE_ID", vars.get("VEHICLE_ID"));'' : Method Invocation props.put
+2025-12-22 03:25:38,815 INFO o.a.j.t.JMeterThread: Thread is done: Setup - Create Test Vehicle 1-1
+2025-12-22 03:25:38,815 INFO o.a.j.t.JMeterThread: Thread finished: Setup - Create Test Vehicle 1-1
+2025-12-22 03:25:38,815 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Test 1: Concurrent Update (5 threads)
+2025-12-22 03:25:38,815 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group Test 1: Concurrent Update (5 threads).
+2025-12-22 03:25:38,815 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:25:38,815 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=5 ramp-up=0 delayedStart=false
+2025-12-22 03:25:38,816 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:25:38,816 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:25:38,817 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:25:38,816 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:25:38,818 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2025-12-22 03:25:38,818 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Test 1: Concurrent Update (5 threads) to finish before starting next group
+2025-12-22 03:25:38,818 INFO o.a.j.t.JMeterThread: Thread started: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:25:39,908 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:25:39,908 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-3
+2025-12-22 03:25:40,013 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:25:40,014 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-5
+2025-12-22 03:25:40,061 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:25:40,062 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-4
+2025-12-22 03:25:40,343 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:25:40,344 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-1
+2025-12-22 03:25:40,357 INFO o.a.j.t.JMeterThread: Thread is done: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:25:40,358 INFO o.a.j.t.JMeterThread: Thread finished: Test 1: Concurrent Update (5 threads) 2-2
+2025-12-22 03:25:40,358 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Test 2: Unique Name Constraint (3 threads)
+2025-12-22 03:25:40,358 INFO o.a.j.e.StandardJMeterEngine: Starting 3 threads for group Test 2: Unique Name Constraint (3 threads).
+2025-12-22 03:25:40,358 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:25:40,359 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=3 ramp-up=0 delayedStart=false
+2025-12-22 03:25:40,360 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:25:40,361 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2025-12-22 03:25:40,361 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Test 2: Unique Name Constraint (3 threads) to finish before starting next group
+2025-12-22 03:25:40,360 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:25:40,362 INFO o.a.j.t.JMeterThread: Thread started: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:25:41,505 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:25:41,506 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-1
+2025-12-22 03:25:41,517 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:25:41,517 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-2
+2025-12-22 03:25:41,736 INFO o.a.j.t.JMeterThread: Thread is done: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:25:41,736 INFO o.a.j.t.JMeterThread: Thread finished: Test 2: Unique Name Constraint (3 threads) 3-3
+2025-12-22 03:25:41,738 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 4 : Test 3: Concurrent Import (2 threads)
+2025-12-22 03:25:41,738 INFO o.a.j.e.StandardJMeterEngine: Starting 2 threads for group Test 3: Concurrent Import (2 threads).
+2025-12-22 03:25:41,738 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-12-22 03:25:41,738 INFO o.a.j.t.ThreadGroup: Starting thread group... number=4 threads=2 ramp-up=0 delayedStart=false
+2025-12-22 03:25:41,739 INFO o.a.j.t.JMeterThread: Thread started: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:25:41,740 INFO o.a.j.t.ThreadGroup: Started thread group number 4
+2025-12-22 03:25:41,740 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2025-12-22 03:25:41,740 INFO o.a.j.t.JMeterThread: Thread started: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:25:42,364 INFO o.a.j.s.FileServer: Stored: test_import_valid1.csv
+2025-12-22 03:25:42,530 INFO o.a.j.t.JMeterThread: Thread is done: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:25:42,530 INFO o.a.j.t.JMeterThread: Thread is done: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:25:42,530 INFO o.a.j.t.JMeterThread: Thread finished: Test 3: Concurrent Import (2 threads) 4-2
+2025-12-22 03:25:42,530 INFO o.a.j.t.JMeterThread: Thread finished: Test 3: Concurrent Import (2 threads) 4-1
+2025-12-22 03:25:42,531 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2025-12-22 03:25:42,531 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)

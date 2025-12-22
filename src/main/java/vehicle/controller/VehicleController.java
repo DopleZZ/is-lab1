@@ -250,13 +250,41 @@ public class VehicleController {
             vehicle.setEnginePower(null);
         }
         
-        if (numberOfWheels == null || numberOfWheels < 1) {
-            return addErrorAndReturn("Количество колёс должно быть больше 0", vehicle, model);
+        VehicleType vehicleType = vehicle.getType();
+        if (vehicleType == VehicleType.SUBMARINE || vehicleType == VehicleType.BOAT) {
+            vehicle.setNumberOfWheels(0);
+        } else {
+            if (numberOfWheels == null || numberOfWheels < 1) {
+                return addErrorAndReturn("Количество колёс должно быть больше 0 для данного типа транспорта", vehicle, model);
+            }
+            vehicle.setNumberOfWheels(numberOfWheels);
         }
-        vehicle.setNumberOfWheels(numberOfWheels);
         
         if (capacity == null || capacity < 1) {
             return addErrorAndReturn("Вместимость должна быть больше 0", vehicle, model);
+        }
+        
+        long maxCapacity;
+        String typeName;
+        switch (vehicleType) {
+            case SUBMARINE:
+                maxCapacity = 150;
+                typeName = "подводной лодки";
+                break;
+            case BOAT:
+                maxCapacity = 50;
+                typeName = "лодки";
+                break;
+            case CHOPPER:
+                maxCapacity = 12;
+                typeName = "вертолёта";
+                break;
+            default:
+                maxCapacity = Long.MAX_VALUE;
+                typeName = "";
+        }
+        if (capacity > maxCapacity) {
+            return addErrorAndReturn("Вместимость " + typeName + " не может превышать " + maxCapacity + " пассажиров", vehicle, model);
         }
         vehicle.setCapacity(capacity);
         
@@ -265,10 +293,27 @@ public class VehicleController {
         }
         vehicle.setDistanceTravelled(distanceTravelled);
         
-        if (fuelConsumption == null || fuelConsumption < 1) {
-            return addErrorAndReturn("Расход топлива должен быть больше 0", vehicle, model);
+        if (vehicle.getEnginePower() != null && vehicle.getEnginePower() > 0) {
+            float expectedFuel = vehicle.getEnginePower() * 0.05f;
+            float minAllowed = expectedFuel * 0.9f;
+            float maxAllowed = expectedFuel * 1.1f;
+            
+            if (fuelConsumption != null && fuelConsumption > 0) {
+                if (fuelConsumption < minAllowed || fuelConsumption > maxAllowed) {
+                    return addErrorAndReturn(String.format(
+                            "Расход топлива должен соответствовать мощности двигателя. " +
+                            "При мощности %d л.с. допустимый расход: %.1f - %.1f л/100км",
+                            vehicle.getEnginePower(), minAllowed, maxAllowed), vehicle, model);
+                }
+                vehicle.setFuelConsumption(fuelConsumption);
+            } else {
+                vehicle.setFuelConsumption(expectedFuel);
+            }
+        } else if (fuelConsumption != null && fuelConsumption >= 0.1f) {
+            vehicle.setFuelConsumption(fuelConsumption);
+        } else {
+            return addErrorAndReturn("Необходимо указать мощность двигателя или расход топлива (минимум 0.1)", vehicle, model);
         }
-        vehicle.setFuelConsumption(fuelConsumption);
         
         return null; 
     }

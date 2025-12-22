@@ -55,10 +55,10 @@ public class Vehicle implements Serializable {
     @Column(name = "engine_power")
     private Integer enginePower;
 
-    @Min(value = 1, message = "Number of wheels must be greater than 0")
+    @Min(value = 0, message = "Number of wheels cannot be negative")
     @Max(value = 100, message = "Number of wheels cannot exceed 100")
     @Column(name = "number_of_wheels", nullable = false)
-    private long numberOfWheels = 1L;
+    private long numberOfWheels = 0L;
 
     @Min(value = 1, message = "Capacity must be greater than 0")
     @Max(value = 10000, message = "Capacity cannot exceed 10000")

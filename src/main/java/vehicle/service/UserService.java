@@ -25,7 +25,7 @@ public class UserService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.setRole(Role.USER); // Default role
+        user.setRole(Role.USER); 
         userDAO.save(user);
     }
     
