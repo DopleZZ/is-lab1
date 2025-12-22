@@ -7,6 +7,7 @@ import vehicle.model.VehicleType;
 import vehicle.validator.VehicleValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
@@ -31,6 +32,7 @@ public class VehicleService {
     @Autowired
     private VehicleValidator vehicleValidator;
     
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public Vehicle createVehicle(@Valid Vehicle vehicle) {
         if (vehicleDAO.existsByName(vehicle.getName())) {
             throw new IllegalArgumentException("Транспортное средство с именем '" + vehicle.getName() + "' уже существует");

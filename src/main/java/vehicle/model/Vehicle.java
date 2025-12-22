@@ -33,7 +33,7 @@ public class Vehicle implements Serializable {
 
     @NotBlank(message = "Name cannot be null or empty")
     @Size(max = 100, message = "Name cannot exceed 100 characters")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @NotNull(message = "Coordinates cannot be null")
