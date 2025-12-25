@@ -7,7 +7,6 @@ import vehicle.model.FuelType;
 import vehicle.service.VehicleService;
 import vehicle.service.CoordinatesService;
 import vehicle.service.NotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +19,15 @@ import java.util.Optional;
 @RequestMapping("/vehicles")
 public class VehicleController {
     
-    @Autowired
-    private VehicleService vehicleService;
-    
-    @Autowired
-    private CoordinatesService coordinatesService;
-    
-    @Autowired
-    private NotificationService notificationService;
+    private final VehicleService vehicleService;
+    private final CoordinatesService coordinatesService;
+    private final NotificationService notificationService;
+
+    public VehicleController(VehicleService vehicleService, CoordinatesService coordinatesService, NotificationService notificationService) {
+        this.vehicleService = vehicleService;
+        this.coordinatesService = coordinatesService;
+        this.notificationService = notificationService;
+    }
     
     @GetMapping
     public String listVehicles(

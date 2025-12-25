@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +100,11 @@
             color: #666;
             margin-top: 5px;
         }
+        .field-error {
+            color: #d32f2f;
+            font-size: 12px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -109,17 +115,19 @@
         <div class="error">${error}</div>
     </c:if>
     
-    <form action="${pageContext.request.contextPath}/register" method="post">
+    <form:form action="${pageContext.request.contextPath}/register" method="post" modelAttribute="registerRequest">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="text" name="username" placeholder="Имя пользователя" required autofocus 
-               minlength="3" maxlength="50" value="${username}">
+        
+        <form:input path="username" placeholder="Имя пользователя" autofocus="true" />
+        <form:errors path="username" cssClass="field-error" element="div" />
         <div class="hint">Минимум 3 символа</div>
         
-        <input type="password" name="password" placeholder="Пароль" required minlength="4">
+        <form:password path="password" placeholder="Пароль" />
+        <form:errors path="password" cssClass="field-error" element="div" />
         <div class="hint">Минимум 4 символа</div>
         
         <button type="submit" class="btn-primary">Зарегистрироваться</button>
-    </form>
+    </form:form>
     
     <div class="divider">или</div>
     

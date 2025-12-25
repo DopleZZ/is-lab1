@@ -7,7 +7,6 @@ import vehicle.model.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,20 +22,21 @@ import java.util.List;
 @Service
 public class ImportService {
 
-    @Autowired
-    private VehicleService vehicleService;
-    
-    @Autowired
-    private VehicleDAO vehicleDAO;
-    
-    @Autowired
-    private CoordinatesService coordinatesService;
+    private final VehicleService vehicleService;
+    private final VehicleDAO vehicleDAO;
+    private final CoordinatesService coordinatesService;
+    private final ImportHistoryDAO importHistoryDAO;
+    private final UserDAO userDAO;
 
-    @Autowired
-    private ImportHistoryDAO importHistoryDAO;
-
-    @Autowired
-    private UserDAO userDAO;
+    public ImportService(VehicleService vehicleService, VehicleDAO vehicleDAO, 
+                         CoordinatesService coordinatesService, ImportHistoryDAO importHistoryDAO, 
+                         UserDAO userDAO) {
+        this.vehicleService = vehicleService;
+        this.vehicleDAO = vehicleDAO;
+        this.coordinatesService = coordinatesService;
+        this.importHistoryDAO = importHistoryDAO;
+        this.userDAO = userDAO;
+    }
 
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public int executeImport(MultipartFile file) throws Exception {

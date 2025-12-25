@@ -2,7 +2,6 @@ package vehicle.service;
 
 import vehicle.dao.UserDAO;
 import vehicle.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,8 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+
+    public CustomUserDetailsService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

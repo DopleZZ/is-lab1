@@ -3,7 +3,6 @@ package vehicle.service;
 import vehicle.dao.UserDAO;
 import vehicle.model.Role;
 import vehicle.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,11 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
 
-    @Autowired
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserService(UserDAO userDAO, PasswordEncoder passwordEncoder) {
+        this.userDAO = userDAO;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public void register(String username, String password) {
         if (userDAO.findByUsername(username).isPresent()) {

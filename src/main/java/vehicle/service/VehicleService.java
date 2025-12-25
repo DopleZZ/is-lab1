@@ -5,7 +5,6 @@ import vehicle.model.Vehicle;
 import vehicle.model.FuelType;
 import vehicle.model.VehicleType;
 import vehicle.validator.VehicleValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +22,13 @@ import java.util.stream.Collectors;
 @Transactional
 public class VehicleService {
     
-    @Autowired
-    private VehicleDAO vehicleDAO;
-    
-    @Autowired
-    private VehicleValidator vehicleValidator;
+    private final VehicleDAO vehicleDAO;
+    private final VehicleValidator vehicleValidator;
+
+    public VehicleService(VehicleDAO vehicleDAO, VehicleValidator vehicleValidator) {
+        this.vehicleDAO = vehicleDAO;
+        this.vehicleValidator = vehicleValidator;
+    }
     
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Vehicle createVehicle(@Valid Vehicle vehicle) {

@@ -4,7 +4,6 @@ import vehicle.model.Vehicle;
 import vehicle.model.FuelType;
 import vehicle.service.VehicleService;
 import vehicle.service.NotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +15,13 @@ import java.util.List;
 @RequestMapping("/special")
 public class SpecialOperationsController {
     
-    @Autowired
-    private VehicleService vehicleService;
-    
-    @Autowired
-    private NotificationService notificationService;
+    private final VehicleService vehicleService;
+    private final NotificationService notificationService;
+
+    public SpecialOperationsController(VehicleService vehicleService, NotificationService notificationService) {
+        this.vehicleService = vehicleService;
+        this.notificationService = notificationService;
+    }
     
     @GetMapping
     public String showSpecialOperations(Model model) {

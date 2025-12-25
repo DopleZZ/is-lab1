@@ -4,7 +4,6 @@ import vehicle.model.ImportHistory;
 import vehicle.model.User;
 import vehicle.service.ImportService;
 import vehicle.dao.UserDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,18 +21,21 @@ import java.util.List;
 @RequestMapping("/import")
 public class ImportController {
 
-    @Autowired
-    private ImportService importService;
+    private final ImportService importService;
+    private final UserDAO userDAO;
 
-    @Autowired
-    private UserDAO userDAO;
+    public ImportController(ImportService importService, UserDAO userDAO) {
+        this.importService = importService;
+        this.userDAO = userDAO;
+    }
 
     @GetMapping
     public String showImportPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         if (userDetails == null) {
             return "redirect:/login";
         }
-        User user = userDAO.findByUsername(userDetails.getUsername()).orElseThrow();
+        User user = userDAO.findByUsername(userDetails.getUsername())
+            .orElseThrow(() -> new IllegalStateException("Пользователь не найден: " + userDetails.getUsername()));
         List<ImportHistory> history = importService.getHistory(user);
         model.addAttribute("history", history);
         return "import";
@@ -51,7 +53,8 @@ public class ImportController {
             return "redirect:/import";
         }
 
-        User user = userDAO.findByUsername(userDetails.getUsername()).orElseThrow();
+        User user = userDAO.findByUsername(userDetails.getUsername())
+            .orElseThrow(() -> new IllegalStateException("Пользователь не найден: " + userDetails.getUsername()));
         ImportHistory history = importService.logStart(user);
 
         try {
