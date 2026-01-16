@@ -2,6 +2,7 @@ package vehicle.dao;
 
 import vehicle.model.Vehicle;
 import vehicle.model.FuelType;
+import vehicle.model.VehicleType;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
@@ -108,6 +109,7 @@ public class VehicleDAO {
             .collect(Collectors.toList());
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void resetDistanceTravelled(int id) {
         try {
             em.createNativeQuery("ALTER TABLE vehicles DROP CONSTRAINT IF EXISTS vehicles_distance_travelled_check").executeUpdate();
@@ -121,6 +123,8 @@ public class VehicleDAO {
                 throw new IllegalArgumentException("Vehicle with id " + id + " not found");
             }
             
+        } catch (IllegalArgumentException e) {
+            throw e;
         } catch (Exception e) {
             int updated = em.createNativeQuery(
                 "UPDATE vehicles SET distance_travelled = 0.0001 WHERE id = :id")
@@ -130,22 +134,48 @@ public class VehicleDAO {
             if (updated == 0) {
                 throw new IllegalArgumentException("Vehicle with id " + id + " not found");
             }
-            throw new RuntimeException("Не удалось обнулить пробег из-за constraint в БД. Установлено минимальное значение 0.0001", e);
         }
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void addWheels(int id, long wheelsToAdd) {
         Vehicle vehicle = em.find(Vehicle.class, id);
         if (vehicle != null) {
-            long newWheels = vehicle.getNumberOfWheels() + wheelsToAdd;
-            if (newWheels < 1) {
-                throw new IllegalArgumentException("Number of wheels cannot be less than 1");
+            if (vehicle.getType() == VehicleType.SUBMARINE || 
+                vehicle.getType() == VehicleType.BOAT) {
+                throw new IllegalArgumentException("Подводные лодки и лодки не могут иметь колёс");
             }
+            
+            if (wheelsToAdd < 1) {
+                throw new IllegalArgumentException("Количество добавляемых колёс должно быть больше 0");
+            }
+            
+            long newWheels = vehicle.getNumberOfWheels() + wheelsToAdd;
+            
+            if (vehicle.getType() == VehicleType.CHOPPER && newWheels > 6) {
+                throw new IllegalArgumentException("Вертолёт не может иметь более 6 колёс (текущее: " + 
+                        vehicle.getNumberOfWheels() + ", после добавления: " + newWheels + ")");
+            }
+            
             vehicle.setNumberOfWheels(newWheels);
             em.merge(vehicle);
         } else {
-            throw new IllegalArgumentException("Vehicle with id " + id + " not found");
+            throw new IllegalArgumentException("Транспортное средство с id " + id + " не найдено");
         }
+    }
+
+    public boolean existsByName(String name) {
+        Long count = em.createQuery("SELECT COUNT(v) FROM Vehicle v WHERE v.name = :name", Long.class)
+                .setParameter("name", name)
+                .getSingleResult();
+        return count > 0;
+    }
+    
+    public Optional<Vehicle> findByName(String name) {
+        List<Vehicle> results = em.createQuery("SELECT v FROM Vehicle v WHERE v.name = :name", Vehicle.class)
+                .setParameter("name", name)
+                .getResultList();
+        return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
     }
 }
 

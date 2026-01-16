@@ -2,7 +2,6 @@ package vehicle.service;
 
 import vehicle.dao.CoordinatesDAO;
 import vehicle.model.Coordinates;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.validation.Valid;
@@ -13,8 +12,11 @@ import java.util.Optional;
 @Transactional
 public class CoordinatesService {
     
-    @Autowired
-    private CoordinatesDAO coordinatesDAO;
+    private final CoordinatesDAO coordinatesDAO;
+
+    public CoordinatesService(CoordinatesDAO coordinatesDAO) {
+        this.coordinatesDAO = coordinatesDAO;
+    }
     
     public Coordinates createCoordinates(@Valid Coordinates coordinates) {
         return coordinatesDAO.save(coordinates);

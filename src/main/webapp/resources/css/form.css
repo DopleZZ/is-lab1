@@ -111,3 +111,121 @@ input:hover, select:hover {
 .hidden {
     display: none !important;
 }
+
+.hint {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+    font-weight: normal;
+}
+
+input[readonly] {
+    background-color: #f0f0f0 !important;
+    cursor: not-allowed;
+}
+
+/* Стили для сообщений об ошибках */
+.error-box {
+    background: linear-gradient(135deg, #ffebee 0%, #fce4ec 100%);
+    border: 2px solid #ef5350;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    color: #c62828;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.error-box::before {
+    content: "!";
+    font-size: 1.2em;
+    font-weight: bold;
+    background: #ef5350;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.success-box {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border: 2px solid #66bb6a;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    color: #2e7d32;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.success-box::before {
+    content: "✓";
+    font-size: 1.2em;
+    font-weight: bold;
+    background: #66bb6a;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Стили для полей с ошибками */
+input.error, select.error {
+    border-color: #ef5350 !important;
+    background-color: #fff8f8 !important;
+}
+
+input.error:focus, select.error:focus {
+    box-shadow: 0 0 0 4px rgba(239, 83, 80, 0.2);
+}
+
+.field-error {
+    color: #c62828;
+    font-size: 12px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.field-error::before {
+    content: "×";
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Стили для обязательных полей */
+label .required {
+    color: #ef5350;
+    margin-left: 2px;
+}
+
+/* Подсветка при валидации */
+input:valid:not(:placeholder-shown),
+select:valid {
+    border-color: #66bb6a;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: #ef5350;
+}

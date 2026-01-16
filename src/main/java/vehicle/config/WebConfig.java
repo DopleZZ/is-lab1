@@ -3,6 +3,8 @@ package vehicle.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Controller;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;
@@ -16,11 +18,23 @@ import org.springframework.web.servlet.view.JstlView;
 import java.nio.charset.StandardCharsets;
 
 
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.MultipartResolver;
+
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "vehicle")
+@ComponentScan(basePackages = "vehicle", useDefaultFilters = false,
+    includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)
+)
 public class WebConfig implements WebMvcConfigurer {
     
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSize(10485760); 
+        return resolver;
+    }
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

@@ -1,0 +1,6 @@
+name,x,y,type,enginePower,numberOfWheels,capacity,distanceTravelled,fuelConsumption,fuelType
+Наутилус,150.5,300,SUBMARINE,400,0,120,5000,20.0,ANTIMATTER
+Посейдон,200,450,SUBMARINE,600,0,150,12000,30.0,KEROSENE
+Аврора,-100,100,BOAT,200,0,40,800,10.0,GASOLINE
+Волна,50,200,BOAT,180,0,50,1500,9.0,ELECTRICITY
+Сокол,300,600,CHOPPER,240,4,12,3500,12.0,KEROSENE

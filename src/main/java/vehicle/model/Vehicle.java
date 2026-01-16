@@ -32,7 +32,8 @@ public class Vehicle implements Serializable {
     private int id;
 
     @NotBlank(message = "Name cannot be null or empty")
-    @Column(nullable = false)
+    @Size(max = 100, message = "Name cannot exceed 100 characters")
+    @Column(nullable = false, unique = true)
     private String name;
 
     @NotNull(message = "Coordinates cannot be null")
@@ -50,22 +51,27 @@ public class Vehicle implements Serializable {
     private VehicleType type;
 
     @Min(value = 1, message = "Engine power must be greater than 0")
+    @Max(value = 100000, message = "Engine power cannot exceed 100000")
     @Column(name = "engine_power")
     private Integer enginePower;
 
-    @Min(value = 1, message = "Number of wheels must be greater than 0")
+    @Min(value = 0, message = "Number of wheels cannot be negative")
+    @Max(value = 100, message = "Number of wheels cannot exceed 100")
     @Column(name = "number_of_wheels", nullable = false)
-    private long numberOfWheels = 1L;
+    private long numberOfWheels = 0L;
 
     @Min(value = 1, message = "Capacity must be greater than 0")
+    @Max(value = 10000, message = "Capacity cannot exceed 10000")
     @Column(nullable = false)
     private long capacity = 1L;
 
     @Min(value = 1, message = "Distance travelled must be greater than 0")
+    @Max(value = 10000000, message = "Distance travelled cannot exceed 10000000")
     @Column(name = "distance_travelled", nullable = false)
     private float distanceTravelled = 1.0f;
 
     @Min(value = 1, message = "Fuel consumption must be greater than 0")
+    @Max(value = 1000, message = "Fuel consumption cannot exceed 1000")
     @Column(name = "fuel_consumption", nullable = false)
     private float fuelConsumption = 1.0f;
 
@@ -81,7 +87,7 @@ public class Vehicle implements Serializable {
         }
     }
 
-    // Custom constructor for convenience (excluding id and creationDate)
+    
     public Vehicle(String name, Coordinates coordinates, VehicleType type, 
                    Integer enginePower, long numberOfWheels, long capacity,
                    float distanceTravelled, float fuelConsumption, FuelType fuelType) {
