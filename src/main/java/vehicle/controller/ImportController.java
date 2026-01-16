@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -34,8 +33,10 @@ public class ImportController {
         if (userDetails == null) {
             return "redirect:/login";
         }
-        User user = userDAO.findByUsername(userDetails.getUsername())
-            .orElseThrow(() -> new IllegalStateException("Пользователь не найден: " + userDetails.getUsername()));
+        User user = userDAO.findByUsername(userDetails.getUsername()).orElse(null);
+        if (user == null) {
+            return "redirect:/login";
+        }
         List<ImportHistory> history = importService.getHistory(user);
         model.addAttribute("history", history);
         return "import";
@@ -53,8 +54,10 @@ public class ImportController {
             return "redirect:/import";
         }
 
-        User user = userDAO.findByUsername(userDetails.getUsername())
-            .orElseThrow(() -> new IllegalStateException("Пользователь не найден: " + userDetails.getUsername()));
+        User user = userDAO.findByUsername(userDetails.getUsername()).orElse(null);
+        if (user == null) {
+            return "redirect:/login";
+        }
         ImportHistory history = importService.logStart(user);
 
         try {

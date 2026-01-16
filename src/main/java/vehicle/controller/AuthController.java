@@ -6,10 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import vehicle.dto.RegisterRequest;
 import vehicle.service.UserService;
-
 import javax.validation.Valid;
 
 @Controller

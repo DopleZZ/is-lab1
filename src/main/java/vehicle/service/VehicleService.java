@@ -30,7 +30,7 @@ public class VehicleService {
         this.vehicleValidator = vehicleValidator;
     }
     
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.SERIALIZABLE, noRollbackFor = IllegalArgumentException.class)
     public Vehicle createVehicle(@Valid Vehicle vehicle) {
         if (vehicleDAO.existsByName(vehicle.getName())) {
             throw new IllegalArgumentException("Транспортное средство с именем '" + vehicle.getName() + "' уже существует");
@@ -42,6 +42,7 @@ public class VehicleService {
         return savedVehicle;
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public Vehicle updateVehicle(@Valid Vehicle vehicle) {
         Optional<Vehicle> existingByName = vehicleDAO.findByName(vehicle.getName());
         if (existingByName.isPresent() && existingByName.get().getId() != vehicle.getId()) {
@@ -128,10 +129,12 @@ public class VehicleService {
         return vehicleDAO.findByFuelTypeLessThanFunction(fuelType);
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void resetDistanceTravelled(int id) {
         vehicleDAO.resetDistanceTravelled(id);
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void addWheels(int id, long wheelsToAdd) {
         vehicleDAO.addWheels(id, wheelsToAdd);
     }

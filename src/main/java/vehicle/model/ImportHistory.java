@@ -21,10 +21,9 @@ public class ImportHistory implements Serializable {
     private User user;
 
     @Column(nullable = false)
-    private boolean status; // true = success, false = failed
-
+    private boolean status; 
     @Column(name = "added_count")
-    private Integer addedCount; // null if failed
+    private Integer addedCount; 
 
     @Column(nullable = false)
     private LocalDateTime timestamp;

@@ -109,6 +109,7 @@ public class VehicleDAO {
             .collect(Collectors.toList());
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void resetDistanceTravelled(int id) {
         try {
             em.createNativeQuery("ALTER TABLE vehicles DROP CONSTRAINT IF EXISTS vehicles_distance_travelled_check").executeUpdate();
@@ -122,6 +123,8 @@ public class VehicleDAO {
                 throw new IllegalArgumentException("Vehicle with id " + id + " not found");
             }
             
+        } catch (IllegalArgumentException e) {
+            throw e;
         } catch (Exception e) {
             int updated = em.createNativeQuery(
                 "UPDATE vehicles SET distance_travelled = 0.0001 WHERE id = :id")
@@ -131,10 +134,10 @@ public class VehicleDAO {
             if (updated == 0) {
                 throw new IllegalArgumentException("Vehicle with id " + id + " not found");
             }
-            throw new RuntimeException("Не удалось обнулить пробег из-за constraint в БД. Установлено минимальное значение 0.0001", e);
         }
     }
     
+    @Transactional(noRollbackFor = IllegalArgumentException.class)
     public void addWheels(int id, long wheelsToAdd) {
         Vehicle vehicle = em.find(Vehicle.class, id);
         if (vehicle != null) {
